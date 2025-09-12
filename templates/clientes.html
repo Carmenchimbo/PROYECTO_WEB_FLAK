@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+<h2>Clientes</h2>
+
+<!-- Formulario para agregar cliente -->
+<form method="POST" action="{{ url_for('agregar_cliente') }}" class="row g-3 mb-3">
+  <div class="col-md-5"><input type="text" name="nombre" placeholder="Nombre" class="form-control" required></div>
+  <div class="col-md-5"><input type="email" name="email" placeholder="Email" class="form-control" required></div>
+  <div class="col-md-2"><button class="btn btn-success w-100">Agregar</button></div>
+</form>
+
+<!-- Tabla de clientes -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Email</th><th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in clientes %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.nombre }}</td>
+      <td>{{ c.email }}</td>
+      <td>
+        <a href="{{ url_for('editar_cliente', id=c.id) }}" class="btn btn-primary btn-sm">Editar</a>
+        <a href="{{ url_for('eliminar_cliente', id=c.id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

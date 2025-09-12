@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-4">Bienvenido a Librería Sofía</h1>
+  <p class="lead">Encuentra los mejores libros para tu aprendizaje y entretenimiento.</p>
+  <a href="{{ url_for('ver_productos') }}" class="btn btn-primary btn-lg mt-3">Ver Libros</a>
+</div>
+{% endblock %}
